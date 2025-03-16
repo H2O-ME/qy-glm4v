@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>清言 | GLM-4V模型</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.7.0/styles/github-dark.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+    <script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/marked/4.0.2/marked.min.js"></script>
+    <script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/highlight.js/11.4.0/highlight.min.js" defer></script>
+    <script src="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/crypto-js/4.1.1/crypto-js.min.js"></script>
+    <meta name="description" content="基于智谱GLM-4V-Flash模型的多模态AI助手，支持图像识别和自然语言对话">
+    <meta name="theme-color" content="#4e54c8">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHZpZXdCb3g9IjAgMCAzMiAzMiIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48bGluZWFyR3JhZGllbnQgaWQ9ImEiIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMTAwJSIgeTI9IjEwMCUiPjxzdG9wIHN0b3AtY29sb3I9IiM2MzY2ZjEiIG9mZnNldD0iMCUiLz48c3RvcCBzdG9wLWNvbG9yPSIjOGI1Y2Y2IiBvZmZzZXQ9IjEwMCUiLz48L2xpbmVhckdyYWRpZW50PjxjaXJjbGUgZmlsbD0idXJsKCNhKSIgY3g9IjE2IiBjeT0iMTYiIHI9IjE2Ii8+PGNpcmNsZSBmaWxsPSJub25lIiBzdHJva2U9IiNmZmYiIHN0cm9rZS13aWR0aD0iMiIgY3g9IjE2IiBjeT0iMTYiIHI9IjgiLz48L3N2Zz4=">
+</head>
+<body>
+    <div class="app-container">
+        <!-- 移动设备侧边栏开关 -->
+        <div class="mobile-menu-toggle" id="mobile-menu-toggle">
+            <i class="ri-menu-line"></i>
+        </div>
+
+        <div class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <div class="logo-icon"></div>
+                    <div class="model-info">
+                        <div class="model-name">清言</div>
+                        <div class="model-version">Powered by GLM-4V</div>
+                    </div>
+                </div>
+                <!-- 移动设备关闭侧边栏按钮 -->
+                <div class="close-sidebar" id="close-sidebar">
+                    <i class="ri-close-line"></i>
+                </div>
+            </div>
+            
+            <div class="sidebar-actions">
+                <button id="new-chat" class="new-chat-btn">
+                    <i class="ri-add-line"></i> 新建对话
+                </button>
+            </div>
+            
+            <div class="sidebar-footer">
+                <div class="date-display">
+                    <i class="ri-calendar-line"></i> <span id="current-date"></span>
+                </div>
+                <div class="app-version">v1.0.0 Beta</div>
+            </div>
+        </div>
+        
+        <div class="main-content">
+            <div class="chat-header">
+                <div class="chat-info">
+                    <h1>清言</h1>
+                    <div class="chat-subtitle">与GLM-4V模型对话</div>
+                </div>
+                <div class="theme-toggle" id="theme-toggle" title="切换主题">
+                    <i class="ri-sun-line"></i>
+                </div>
+            </div>
+            
+            <div class="chat-container" id="chat-container">
+                <div class="welcome-card">
+                    <div class="welcome-icon">
+                        <i class="ri-robot-fill"></i>
+                    </div>
+                    <h2>清言</h2>
+                    <p>基于GLM-4V模型，支持图像识别和自然语言对话</p>
+                    
+                    <div class="features-grid">
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="ri-image-add-line"></i>
+                            </div>
+                            <div class="feature-text">上传图片分析</div>
+                        </div>
+                        
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="ri-chat-1-line"></i>
+                            </div>
+                            <div class="feature-text">智能对话交流</div>
+                        </div>
+                    </div>
+                    
+                    <div class="getting-started-btn">
+                        <button id="start-button">
+                            <i class="ri-rocket-line"></i> 
+                        </button>
+                    </div>
+                </div>
+                <!-- 聊天消息将在这里动态添加 -->
+            </div>
+            
+            <div class="chat-input-area">
+                <div class="input-group">
+                    <div class="image-preview-container" id="image-preview-container"></div>
+                    <div class="input-wrapper">
+                        <label for="image-upload" class="image-upload-btn" title="上传图片">
+                            <i class="ri-image-add-line"></i>
+                        </label>
+                        <input type="file" id="image-upload" accept="image/jpeg,image/png,image/gif,image/webp" style="display: none;">
+                        <textarea id="user-input" placeholder="上传图片并输入问题，或直接输入文字..." rows="1"></textarea>
+                        <button id="send-btn" class="send-btn" title="发送">
+                            <i class="ri-send-plane-fill"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html> 
