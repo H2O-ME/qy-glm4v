@@ -1,4 +1,49 @@
 document.addEventListener('DOMContentLoaded', function() {
+    // 添加自定义头像样式 - 放在函数最开始部分
+    const avatarStyle = document.createElement('style');
+    avatarStyle.textContent = `
+        /* 替换所有头像为指定图片 */
+        .logo-icon {
+            background-image: url('https://img.picui.cn/free/2025/03/17/67d8459d88fbf.png') !important;
+            background-size: cover !important;
+            background-position: center !important;
+            background-repeat: no-repeat !important;
+            border-radius: 50% !important;
+        }
+        
+        /* 移除伪元素中的圆圈 */
+        .logo-icon::before {
+            display: none !important;
+        }
+        
+        /* 用户头像也使用相同图片 */
+        .user-avatar .logo-icon {
+            background-image: url('https://img.picui.cn/free/2025/03/17/67d8459d88fbf.png') !important;
+        }
+        
+        /* 机器人头像也使用相同图片 */
+        .bot-avatar .logo-icon {
+            background-image: url('https://img.picui.cn/free/2025/03/17/67d8459d88fbf.png') !important;
+        }
+        
+        /* 欢迎页机器人图标也替换 */
+        .welcome-icon i {
+            display: none;
+        }
+        
+        .welcome-icon::before {
+            content: "";
+            display: block;
+            width: 50px;
+            height: 50px;
+            background-image: url('https://img.picui.cn/free/2025/03/17/67d8459d88fbf.png');
+            background-size: cover;
+            background-position: center;
+            border-radius: 50%;
+        }
+    `;
+    document.head.appendChild(avatarStyle);
+    
     // 获取DOM元素
     const chatContainer = document.getElementById('chat-container');
     const userInput = document.getElementById('user-input');
