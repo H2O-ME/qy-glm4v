@@ -18,12 +18,12 @@ document.addEventListener('DOMContentLoaded', function() {
         
         /* 用户头像也使用相同图片 */
         .user-avatar .logo-icon {
-            background-image: url('http://chat.ccccocccc.cc/favicon.png') !important;
+            background-image: url('https://img20.360buyimg.com/openfeedback/jfs/t1/275291/18/7473/12144/67dd638bF07767365/4cfd58139b349fd4.png') !important;
         }
         
         /* 机器人头像也使用相同图片 */
         .bot-avatar .logo-icon {
-            background-image: url('http://chat.ccccocccc.cc/favicon.png') !important;
+            background-image: url('https://img20.360buyimg.com/openfeedback/jfs/t1/275291/18/7473/12144/67dd638bF07767365/4cfd58139b349fd4.png') !important;
         }
         
         /* 欢迎页机器人图标也替换 */
@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', function() {
             display: block;
             width: 50px;
             height: 50px;
-            background-image: url('http://chat.ccccocccc.cc/favicon.png');
+            background-image: url('https://img20.360buyimg.com/openfeedback/jfs/t1/275291/18/7473/12144/67dd638bF07767365/4cfd58139b349fd4.png');
             background-size: cover;
             background-position: center;
             border-radius: 50%;
