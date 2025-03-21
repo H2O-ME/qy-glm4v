@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', function() {
     avatarStyle.textContent = `
         /* 替换所有头像为指定图片 */
         .logo-icon {
-            background-image: url('https://img.picui.cn/free/2025/03/17/67d8459d88fbf.png') !important;
+            background-image: url('http://chat.ccccocccc.cc/favicon.png') !important;
             background-size: cover !important;
             background-position: center !important;
             background-repeat: no-repeat !important;
@@ -18,12 +18,12 @@ document.addEventListener('DOMContentLoaded', function() {
         
         /* 用户头像也使用相同图片 */
         .user-avatar .logo-icon {
-            background-image: url('https://img.picui.cn/free/2025/03/17/67d8459d88fbf.png') !important;
+            background-image: url('http://chat.ccccocccc.cc/favicon.png') !important;
         }
         
         /* 机器人头像也使用相同图片 */
         .bot-avatar .logo-icon {
-            background-image: url('https://img.picui.cn/free/2025/03/17/67d8459d88fbf.png') !important;
+            background-image: url('http://chat.ccccocccc.cc/favicon.png') !important;
         }
         
         /* 欢迎页机器人图标也替换 */
@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', function() {
             display: block;
             width: 50px;
             height: 50px;
-            background-image: url('https://img.picui.cn/free/2025/03/17/67d8459d88fbf.png');
+            background-image: url('http://chat.ccccocccc.cc/favicon.png');
             background-size: cover;
             background-position: center;
             border-radius: 50%;
